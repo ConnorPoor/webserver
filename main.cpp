@@ -3,7 +3,7 @@
 int main(int argc, char *argv[]) {
     //需要修改的数据库信息,登录名,密码,库名
     std::string user = "normal";
-    std::string passwd = "123";
+    std::string passwd = "normal";
     std::string databasename = "webserver";
 
     //命令行解析

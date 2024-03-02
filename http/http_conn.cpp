@@ -30,7 +30,7 @@ void http_conn::initmysql_result(connection_pool *connPool) {
     connectionRAII mysqlcon(&mysql, connPool);
 
     // 在user表中检索username，passwd数据，浏览器端输入
-    if (mysql_query(mysql, "SELECT username,passwd FROM user")) {
+    if (mysql_query(mysql, "SELECT username, password FROM user")) {
         LOG_ERROR("SELECT error:%s\n", mysql_error(mysql));
     }
 
@@ -446,7 +446,7 @@ http_conn::HTTP_CODE http_conn::do_request() {
             // 如果是注册，先检测数据库中是否有重名的
             // 没有重名的，进行增加数据
             char *sql_insert = (char *)malloc(sizeof(char) * 200);
-            strcpy(sql_insert, "INSERT INTO user(username, passwd) VALUES(");
+            strcpy(sql_insert, "INSERT INTO user(username, password) VALUES(");
             strcat(sql_insert, "'");
             strcat(sql_insert, name);
             strcat(sql_insert, "', '");
